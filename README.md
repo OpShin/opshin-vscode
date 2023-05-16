@@ -1,6 +1,9 @@
-# Template for VS Code python tools extensions
+# VS Code extension for OpShin
 
-This is a template repository to get you started on building a VS Code extension for your favorite python tool. It could be a linter, formatter, or code analysis, or all of those together. This template will give you the basic building blocks you need to build a VS Code extension for it.
+* Uses the built-in linter of [opshin][opshin]: `opshin lint`
+* The extension calls `opshin lint --output-format-json` for the current file.
+* This returns an JSON-object which is parsed by `_parse_output_using_json` in `bundled/tool/lsp_server.py`.
+* An `lsp.Diagnostic` object is created which is the data type for vscode to show the linter warning to the user.
 
 ## Programming Languages and Frameworks
 
@@ -33,24 +36,6 @@ You should know to create and work with python virtual environments.
     1. Find and replace `<pytool-module>` with module name for your tool. This will be used internally to create settings namespace, register commands, etc. Recommendation is to use lower case version of the name, no spaces, `-` are ok. For example, replacing `<pytool-module>` with `pylint` will lead to settings looking like `pylint.args`. Another example, replacing `<pytool-module>` with `black-formatter` will make settings look like `black-formatter.args`.
     1. Find and replace `<pytool-display-name>` with display name for your tool. This is used as the title for the extension in market place, extensions view, output logs, etc. For example, for the `black` extension this is `Black Formatter`.
 1. Install node packages using `npm install`.
-
-## Features of this Template
-
-After finishing the getting started part, this template would have added the following. Assume `<pytool-module>` was replaced with `mytool`, and `<pytool-display-name>` with`My Tool`:
-
-1. A command `My Tool: Restart Server` (command Id: `mytool.restart`).
-1. Following setting:
-    - `mytool.args`
-    - `mytool.path`
-    - `mytool.importStrategy`
-    - `mytool.interpreter`
-    - `mytool.showNotification`
-1. Following triggers for extension activation:
-    - On Language `python`.
-    - On File with `.py` extension found in the opened workspace.
-1. Following commands are registered:
-    - `mytool.restart`: Restarts the language server.
-1. Output Channel for logging `Output` > `My Tool`
 
 ## Adding features from your tool
 
@@ -149,8 +134,5 @@ This can occurs if `bundled/libs` is empty. That is the folder where we put your
 
 Common one is [_pygls_][pygls] module not found.
 
-# TODO: The maintainer of this repo has not yet edited this file
-
-**Repo Owner** Make sure you update this. As a repository owner you will need to update this file with specific instructions for your extension.
-
 [pygls]: https://github.com/openlawlibrary/pygls
+[opshin]: https://github.com/OpShin/opshin
