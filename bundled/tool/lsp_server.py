@@ -546,7 +546,7 @@ def _run_tool(extra_args: Sequence[str]) -> utils.RunResult:
         # sys.path and that might not work for this scenario next time around.
         with utils.substitute_attr(sys, "path", sys.path[:]):
             try:
-                # TODO: `utils.run_module` is equivalent to running `python -m <pytool-module>`.
+                # TODO: `utils.run_module` is equivalent to running `python -m opshin`.
                 # If your tool supports a programmatic API then replace the function below
                 # with code for your tool. You can also use `utils.run_api` helper, which
                 # handles changing working directories, managing io streams, etc.
