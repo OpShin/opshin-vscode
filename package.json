@@ -24,7 +24,10 @@
     },
     "keywords": [
         "python",
-        "opshin"
+        "opshin",
+        "cardano",
+        "plutus",
+        "linter"
     ],
     "engines": {
         "vscode": "^1.75.0"
