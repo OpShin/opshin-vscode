@@ -68,7 +68,10 @@ TOOL_MODULE = "opshin"
 
 TOOL_DISPLAY = "OpShin Linter"
 
-TOOL_ARGS = ["lint", "--output-format-json"]  # default arguments always passed to your tool.
+TOOL_ARGS = [
+    "lint",
+    "--output-format-json",
+]  # default arguments always passed to your tool.
 
 
 # Delete "Linting features" section if your tool is NOT a linter.
@@ -116,7 +119,7 @@ def _linting_helper(document: workspace.Document) -> list[lsp.Diagnostic]:
 def _parse_output_using_json(content: str) -> Sequence[lsp.Diagnostic]:
     """Parse json linter messages and return LSP diagnostic object for each message"""
     diagnostics = []
-    
+
     messages: List[Dict[str, Any]] = json.loads(content)
     for data in messages:
         start = lsp.Position(
@@ -125,7 +128,7 @@ def _parse_output_using_json(content: str) -> Sequence[lsp.Diagnostic]:
         )
         error_class = data.get("error_class")
         message = data.get("message")
-        
+
         diagnostic = lsp.Diagnostic(
             # TODO: add a better position for the end?
             range=lsp.Range(start=start, end=start),
@@ -134,8 +137,8 @@ def _parse_output_using_json(content: str) -> Sequence[lsp.Diagnostic]:
             source=TOOL_DISPLAY,
         )
         diagnostics.append(diagnostic)
-    
-    return diagnostics    
+
+    return diagnostics
 
 
 # TODO: if you want to handle setting specific severity for your linter
@@ -152,6 +155,7 @@ def _get_severity(*_codes: list[str]) -> lsp.DiagnosticSeverity:
 # **********************************************************
 # Linting features end here
 # **********************************************************
+
 
 # **********************************************************
 # Required Language Server Initialization and Exit handlers.
