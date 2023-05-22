@@ -1,27 +1,28 @@
 {
     "name": "opshin",
     "displayName": "OpShin Linter",
-    "description": "Linting support for python files using `opshin`.",
-    "version": "2022.0.0-dev",
+    "description": "Linting support for Smart Contracts in Python using `opshin`.",
+    "version": "0.0.1",
     "preview": true,
     "serverInfo": {
         "name": "OpShin Linter",
         "module": "OpShin"
     },
-    "publisher": "<my-publisher>",
+    "publisher": "OpShinDev",
     "license": "MIT",
-    "homepage": "https://github.com/<my-github>/<my-extension-project>",
+    "homepage": "https://github.com/OpShin/opshin-vscode",
     "repository": {
         "type": "git",
-        "url": "https://github.com/<my-github>/<my-extension-project>.git"
+        "url": "https://github.com/OpShin/opshin-vscode.git"
     },
     "bugs": {
-        "url": "https://github.com/<my-github>/<my-extension-project>/issues"
+        "url": "https://github.com/OpShin/opshin-vscode/issues"
     },
     "galleryBanner": {
         "color": "#070F23",
         "theme": "dark"
     },
+    "icon": "images/icon.png",
     "keywords": [
         "python",
         "opshin",
@@ -34,8 +35,7 @@
     },
     "categories": [
         "Programming Languages",
-        "Linters",
-        "Formatters"
+        "Linters"
     ],
     "extensionDependencies": [
         "ms-python.python"

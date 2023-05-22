@@ -11,6 +11,4 @@
 # Required packages
 pygls
 packaging
-
-# TODO: change back to normal opshin once it is merged
-opshin @ git+https://github.com/chrissiwaffler/opshin/@add-linter
+opshin == 0.14.0
