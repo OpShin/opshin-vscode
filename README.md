@@ -9,15 +9,15 @@
 
 This extension shows you in real time if your [opshin] smart contract is valid and could be compiled to UPLC.
 
-By using this extension you don't need to check every time manually if you are writing correct OpShin syntax.
+By using this extension you don't need to manually check every time if you are writing correct OpShin syntax.
 
-For more information about writing Smart Contracts for Cardano with OpShin in Python, please refer to the [website](https://opshin.dev/) or the [official repository](https://github.com/OpShin/opshin).
+For more information about writing Smart Contracts for Cardano with OpShin in Python, please refer to the [website of OpShin](https://opshin.dev/) or the [official repository](https://github.com/OpShin/opshin).
 
 &nbsp;
 
 ## Installation
 
-Please use check that you have necessary versions installed:
+Please use check that you have the necessary versions installed:
 
 - `opshin >= 0.14.0`
 - `python >= 3.8, < 3.12`
