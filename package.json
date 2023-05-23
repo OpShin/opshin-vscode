@@ -1,7 +1,7 @@
 {
     "name": "opshin",
     "displayName": "OpShin Linter",
-    "description": "Linting support for Smart Contracts in Python using `opshin`.",
+    "description": "Linting support for Smart Contracts in Python using opshin",
     "version": "0.0.1",
     "preview": true,
     "serverInfo": {
