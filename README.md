@@ -1,6 +1,6 @@
 <div align="center">
+<img src="images/opshin-linter.png" alt="OpShin Logo" width=200>
 <h1>OpShin Linter</h1>
-<img src="images/opshin.png" alt="OpShin Logo" width=200>
 </div>
 
 &nbsp;
