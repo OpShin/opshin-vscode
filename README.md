@@ -19,7 +19,7 @@ For more information about writing Smart Contracts for Cardano with OpShin in Py
 
 Please use check that you have the necessary versions installed:
 
-- `opshin >= 0.14.0`
+- `opshin >= 0.14.1`
 - `python >= 3.8, < 3.12`
 
 &nbsp;
