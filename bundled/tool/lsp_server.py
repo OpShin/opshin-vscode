@@ -48,7 +48,7 @@ RUNNER = pathlib.Path(__file__).parent / "lsp_runner.py"
 
 MAX_WORKERS = 5
 LSP_SERVER = server.LanguageServer(
-    name="OpShin Linter", version="0.0.1", max_workers=MAX_WORKERS
+    name="OpShin Linter", version="0.1.0", max_workers=MAX_WORKERS
 )
 
 
