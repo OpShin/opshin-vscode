@@ -12,6 +12,7 @@ import sys
 import sysconfig
 import traceback
 from typing import Any, Dict, List, Optional, Sequence
+from opshin.__main__ import Purpose
 
 
 # **********************************************************
@@ -107,12 +108,45 @@ def did_close(params: lsp.DidCloseTextDocumentParams) -> None:
     LSP_SERVER.publish_diagnostics(document.uri, [])
 
 
+# output diagnostics when a invalid purpose is given like "#!/usr/bin/env -S opshin eval minntingg"
+WRONG_PURPOSE_DIAGNOSTIC = lsp.Diagnostic(
+    range=lsp.Range(
+        start=lsp.Position(line=0, character=0), end=lsp.Position(line=0, character=100)
+    ),
+    message="not a valid script purpose given",
+    source=TOOL_DISPLAY,
+)
+
+
 def _linting_helper(document: workspace.Document) -> list[lsp.Diagnostic]:
     # TODO: Determine if your tool supports passing file content via stdin.
     # If you want to support linting on change then your tool will need to
     # support linting over stdin to be effective. Read, and update
     # _run_tool_on_document and _run_tool functions as needed for your project.
-    result = _run_tool_on_document(document)
+
+    # Determine the purpose of the script
+
+    # default shebang: "#! opshin" -> represents any purpose
+    is_default_shebang = re.match(r"^#! *opshin", document.source) is not None
+
+    # check if there is a special shebang e.g., "#!/usr/bin/env -S opshin eval spending"
+    shebang = re.match(r"^#!.*opshin.*", document.source)
+    if not is_default_shebang and shebang is not None:
+        purpose_str = re.sub(r"^#!.*opshin.*eval", "", shebang.group(0)).strip()
+        log_always(f"purpose_str: {purpose_str}")
+        try:
+            purpose = Purpose(purpose_str)
+        except ValueError:
+            return [WRONG_PURPOSE_DIAGNOSTIC]
+
+    if shebang is None and not is_default_shebang:
+        # do not lint at all
+        return []
+
+    if is_default_shebang:
+        purpose = Purpose.any
+
+    result = _run_tool_on_document(document, extra_args=[f"{purpose.value}"])
     return _parse_output_using_json(result.stdout) if result.stdout else []
 
 
@@ -375,6 +409,7 @@ def _run_tool_on_document(
                 # with code for your tool. You can also use `utils.run_api` helper, which
                 # handles changing working directories, managing io streams, etc.
                 # Also update `_run_tool` function and `utils.run_module` in `lsp_runner.py`.
+                log_always(f"Running module: {TOOL_MODULE} {argv}")
                 result = utils.run_module(
                     module=TOOL_MODULE,
                     argv=argv,

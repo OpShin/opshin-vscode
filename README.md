@@ -24,6 +24,16 @@ Please use check that you have the necessary versions installed:
 
 &nbsp;
 
+## Usage
+
+To activate Linting support, add a shebang to the first line of the python file to indicate that it represents an opshin smart contract.
+You can choose from the following options:
+
+- a general shebang: `#!opshin`, which represents `opshin eval any`
+- or a more specific purpose: `#!/usr/bin/env -S opshin eval minting`
+
+&nbsp;
+
 ## Support
 
 To contribute to this repository, please check out [DEVELOPMENT.md](https://github.com/OpShin/opshin-vscode/blob/main/DEVELOPMENT.md)
