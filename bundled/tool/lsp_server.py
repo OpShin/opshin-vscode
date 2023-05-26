@@ -48,7 +48,7 @@ RUNNER = pathlib.Path(__file__).parent / "lsp_runner.py"
 
 MAX_WORKERS = 5
 LSP_SERVER = server.LanguageServer(
-    name="OpShin Linter", version="0.1.0", max_workers=MAX_WORKERS
+    name="OpShin Linter", version="0.1.1", max_workers=MAX_WORKERS
 )
 
 
@@ -71,7 +71,6 @@ TOOL_DISPLAY = "OpShin Linter"
 
 TOOL_ARGS = [
     "lint",
-    "--output-format-json",
 ]  # default arguments always passed to your tool.
 
 
@@ -362,7 +361,7 @@ def _run_tool_on_document(
         # set use_stdin to False, or provide path, what ever is appropriate for your tool.
         argv += []
     else:
-        argv += [document.path]
+        argv += [document.path, "--output-format-json"]
 
     if use_path:
         # This mode is used when running executables.
