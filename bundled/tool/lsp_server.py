@@ -156,7 +156,7 @@ def _parse_output_using_json(content: str) -> Sequence[lsp.Diagnostic]:
     messages: List[Dict[str, Any]] = json.loads(content)
     for data in messages:
         start = lsp.Position(
-            line=int(data.get("line")),
+            line=int(data.get("line")) - 1,
             character=int(data.get("column")),
         )
         error_class = data.get("error_class")
@@ -408,7 +408,7 @@ def _run_tool_on_document(
                 # with code for your tool. You can also use `utils.run_api` helper, which
                 # handles changing working directories, managing io streams, etc.
                 # Also update `_run_tool` function and `utils.run_module` in `lsp_runner.py`.
-                log_always(f"Running module: {TOOL_MODULE} {argv}")
+                log_to_output(f"Running module: {TOOL_MODULE} {argv}")
                 result = utils.run_module(
                     module=TOOL_MODULE,
                     argv=argv,
