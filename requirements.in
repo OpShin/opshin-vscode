@@ -12,3 +12,4 @@
 pygls
 packaging
 opshin == 0.14.0
+typing-extensions
