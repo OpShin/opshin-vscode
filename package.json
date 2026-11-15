@@ -6,7 +6,7 @@
     "preview": true,
     "serverInfo": {
         "name": "OpShin Linter",
-        "module": "OpShin"
+        "module": "opshin"
     },
     "publisher": "OpShinDev",
     "license": "MIT",
